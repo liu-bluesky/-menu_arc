@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>jQuery+CSS3动画弧形弹出菜单效果_大头网</title>
+<link href="css/datouwang.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!-- 代码 开始 -->
+<ul id="navs" data-open="收起" data-close="展开">
+	<li><a href="http://www.datouwang.com/">menu</a></li>
+	<li><a href="http://www.datouwang.com/">menu</a></li>
+	<li><a href="http://www.datouwang.com/">menu</a></li>
+	<li><a href="http://www.datouwang.com/">menu</a></li>
+	<li><a href="http://www.datouwang.com/">menu</a></li>
+	<li><a href="http://www.datouwang.com/">menu</a></li>
+</ul>
+   
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+/**
+ * 
+ * x1 = x0 +半径 * cos(角度 * PI / 180)
+
+	y1 = y0 + 半径 * sin(角度 * PI /180)
+ * */
+(function(){
+	var ul=$("#navs"),li=$("#navs li"),i=li.length,n=i-1,r=300;
+	/**
+	 * 
+	 * 
+	 * 
+	 * */
+	ul.click(function(){
+		$(this).toggleClass('active');
+
+		if($(this).hasClass('active')){
+			for(var a=0;a<i;a++){
+				li.eq(a).css({
+					'transition-delay':""+(50*a)+"ms",
+					'-webkit-transition-delay':""+(50*a)+"ms",
+					'-o-transition-delay':""+(50*a)+"ms",
+					'transform':"translate("+(r*Math.cos(90/n*a*(Math.PI/180)))+"px,"+(-r*Math.sin(90/n*a*(Math.PI/180)))+"px",
+					// '-webkit-transform':"translate("+(r*Math.cos(90/n*a*(Math.PI/180)))+"px,"+(-r*Math.sin(90/n*a*(Math.PI/180)))+"px",
+					// '-o-transform':"translate("+(r*Math.cos(90/n*a*(Math.PI/180)))+"px,"+(-r*Math.sin(90/n*a*(Math.PI/180)))+"px",
+					// '-ms-transform':"translate("+(r*Math.cos(90/n*a*(Math.PI/180)))+"px,"+(-r*Math.sin(90/n*a*(Math.PI/180)))+"px"
+				});
+			}
+		}else{
+			li.removeAttr('style');
+		}
+	});
+})($);
+
+</script>
+<!-- 代码 结束 -->
+
+</body>
+</html>
